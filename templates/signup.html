@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMeetup|Register</title>
+    <link rel="shortcut icon" href="../static/images/TechMeetup.jpeg" />
+    <link rel="stylesheet" href="../static/css/auth.css">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="logo"> <a href="home.html">TechMeetup</a></div>
+            <h1>Welcome to TechMeetup</h1>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">Company Name</label>
+                    <input type="text" id="name" placeholder="Enter Company name">
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Enter email">
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="company-logo-url">Company Logo Url</label>
+                    <input type="text" id="company-logo-url" placeholder="Enter Company logo Url">
+                    <span class="error-message" id="company-logo-url-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="password" placeholder="Enter password">
+                        <button type="button" class="password-toggle" data-target="password">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="error-message" id="password-error"></span>
+                </div>
+                <div class="form-group">
+                    
+                    <span class="error-message" id="confirm-password-error"></span>
+                </div>
+                <button  class="submit-button">Sign Up</button>
+                <p id="success-message" style="display: none; color: green;"></p>
+                <p id="form-error" style="display: none; color: red;"></p>
+            </form>
+            <p class="signup-text">
+                Already have an account? <a href="login.html">Login</a>
+            </p>
+        </div>
+    </main>
+    <script src="../static/js/auth.js"></script>
+    <script type="module" src="../static/js/signup.js"></script>
+</body>
+
+</html>

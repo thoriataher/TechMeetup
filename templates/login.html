@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMeetup|login</title>
+    <link rel="shortcut icon" href="../static/images/TechMeetup.jpeg" />
+    <link rel="stylesheet" href="../static/css/auth.css">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div>
+                <div class="logo"> <a href="home.html">TechMeetup</a></div>
+                <h1>Welcome back to TechMeetup</h1>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="credintials" type="email" id="email" placeholder="Enter email">
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="password" placeholder="Enter password" data-target="password">
+                        <button type="button" class="password-toggle" id="togglePassword" data-target="password">
+                            <svg id="eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                        <span class="error-message" id="password-error"></span>
+                    </div>
+                    <p id="form-error" style= "color: red;"></p>
+                </div>
+                <button type="submit" class="submit-button">Login</button>
+            </form>
+            <p class="signup-text">
+                Don't have an account? <a href="signup.html">signup</a>
+            </p>
+        </div>
+    </main>
+    <script src="../static/js/auth.js"></script>
+    <script type="module" src="../static/js/login.js"></script>
+</body>
+
+</html>
