@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     authButton.addEventListener("click", function () {
         if (localStorage.getItem("isLoggedIn") === "true") {
             localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("companyLogoUrl")
         } else {
             localStorage.setItem("isLoggedIn", "true");
         }
@@ -47,7 +48,6 @@ const getAllEvents = async function getAllEvents() {
 }
 document.addEventListener("DOMContentLoaded", async function () {
     const eventsGrid = document.getElementById("events-grid");
-    console.log("test")
     // Function to create an event card
     function createEventCard(event) {
         const eventCard = document.createElement("div");
@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Load events and populate the grid
     async function loadEvents() {
         const events = await getAllEvents();
-        console.log(events);
         if (events.length > 0) {
             events.forEach((event) => {
                 eventCard = createEventCard(event);

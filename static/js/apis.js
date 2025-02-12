@@ -44,8 +44,8 @@ export const loginUser = async (loginValues) => {
         if (result.company_id) {
             const session = localStorage.setItem('company_id', result.company_id);
         }
-        if (result.company_id) {
-            localStorage.setItem('company_id', result.id);
+        if (result.company_logo_url) {
+            localStorage.setItem('companyLogoUrl', result.company_logo_url);
         }
         if (!response.ok) {
             throw new Error(result.error || 'something went wrong');

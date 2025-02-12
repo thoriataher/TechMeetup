@@ -45,11 +45,7 @@ document.getElementById('login-form').addEventListener('submit', async function 
 
     if (isValid) {
         const loginData = { email, password }
-        const result = await loginUser(loginData)
-        if (result?.company_id & result.company_logo_url) {
-            localStorage.setItem('company_id', result.company_id);
-            localStorage.setItem(`company_logo_${result.company_id}`, result.company_logo_url);
-        }
+        const result = await loginUser(loginData);
         if (result?.message) {
             window.location.href = 'dashboard.html'
         } else {

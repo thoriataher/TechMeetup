@@ -1,35 +1,5 @@
 import { registerCompany } from "./apis.js";
 
-// async function registerCompany(userData, showError, showSuccess) {
-//     try {
-//         const response = await fetch('http://127.0.0.1:5000/api/v1/auth/register', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify(userData),
-//         });
-
-//         const data = await response.json();
-
-//         if (response.status === 400 || response.status === 409) {
-//             showError("form-error", data.error);
-//             return;
-//         }
-
-//         if (!response.ok) {
-//             throw new Error(data.error || "Something went wrong");
-//         }
-
-//         showSuccess("success-message", data.message);
-
-//         setTimeout(() => {
-//             window.location.href = "login.html";
-//         }, 2000);
-//         return data;
-
-//     } catch (error) {
-//         showError("form-error", error.message);
-//     }
-// }
 function showError(elementId, message) {
     const errorElement = document.getElementById(elementId);
     errorElement.textContent = message;
@@ -109,8 +79,6 @@ document.getElementById('register-form').addEventListener('submit', async functi
             password
         }, showError, showSuccess);
         if (result?.message) {
-            // localStorage.setItem("companyName", name);
-            // localStorage.setItem("companyLogoUrl", companyLogoUrl);
             showSuccess('success-message', result.message);
             window.location.href = "login.html";
         } else {

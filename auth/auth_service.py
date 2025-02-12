@@ -36,5 +36,4 @@ class AuthService:
         if not company or not SecurityUtils.check_password(password, company["password"]):
             return {"error": "Invalid email or password"}, 401
         SecurityUtils.login_user(company)
-        return {"message": "User login successfully", "company_id": company["id"]
-}, 200
+        return {"message": "User login successfully", "company_id": company["id"], "company_logo_url": company["logo_url"]}, 200
