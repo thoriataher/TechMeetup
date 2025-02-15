@@ -17,13 +17,19 @@ export async function registerCompany(userData, showError, showSuccess) {
             throw new Error(data.error || "Something went wrong");
         }
 
+        if (data.company_id) {
+            localStorage.setItem("company_id", data.company_id);
+            localStorage.setItem("isLoggedIn", "true");
+        }
+
         showSuccess("success-message", data.message);
 
         setTimeout(() => {
-            window.location.href = "login.html";
+            // Redirect to company's dashboard
+            window.location.href = `dashboard.html?company_id=${data.company_id}`;
         }, 2000);
-        return data;
 
+        return data;
     } catch (error) {
         showError("form-error", error.message);
     }

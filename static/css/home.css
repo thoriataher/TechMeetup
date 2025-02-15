@@ -35,6 +35,13 @@ a .login-btn{
     text-decoration: none;
 }
 
+.dasboard{
+    font-size: 1.9rem;
+    font-weight: bold;
+    background-color: transparent;
+    cursor: pointer;
+} 
+
 .login-btn:hover {
     border-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
