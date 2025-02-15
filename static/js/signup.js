@@ -80,7 +80,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
         }, showError, showSuccess);
         if (result?.message) {
             showSuccess('success-message', result.message);
-            window.location.href = "login.html";
+            window.location.href = "dashboard.html";
         } else {
             showError('form-error', result.message);
         }

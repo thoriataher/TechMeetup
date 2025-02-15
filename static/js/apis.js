@@ -47,6 +47,7 @@ export const loginUser = async (loginValues) => {
         if (result.company_logo_url) {
             localStorage.setItem('companyLogoUrl', result.company_logo_url);
         }
+        localStorage.setItem('isLoggedIn', 'true');
         if (!response.ok) {
             throw new Error(result.error || 'something went wrong');
         }
@@ -151,20 +152,26 @@ export const deleteEvent = async function (company_id, event_id) {
     }
 }
 
-// export async function getAllEvents() {
-//     try {
-//         const response = await fetch("http://127.0.0.1:5000/api/v1/events", {
-//             method: 'GET',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             }
-//         })
-//         const result = await response.json();
-//         if (!response.ok) {
-//             throw new Error(response.error || 'something went wrong');
-//         }
-//         return result
-//     } catch (err) {
-//         return { error: err.message };
-//     }
-// }
+export const logoutUser = async () => {
+    try {
+        const response = await fetch("http://127.0.0.1:5000/api/v1/auth/logout", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include", 
+        });
+
+        if (response.ok) {
+            // Clear local storage after successful logout
+            localStorage.clear();
+            // Prevent back button issue
+            history.replaceState(null, "", location.href);
+            window.location.href = "login.html";
+        }
+
+        return response.ok; 
+    } catch (error) {
+        return false;
+    }
+};

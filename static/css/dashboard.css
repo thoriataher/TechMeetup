@@ -386,3 +386,7 @@ z-index: 1000;}
     background: gray;
     color: white;
 } 
+
+a {
+    font-size: 30px;
+}

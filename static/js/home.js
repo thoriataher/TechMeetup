@@ -1,10 +1,13 @@
-// import { getEvents } from "./apis";
-document.addEventListener("DOMContentLoaded", async function () {
+import { logoutUser } from "./apis.js";
+
+document.addEventListener("DOMContentLoaded", function () {
     const authButton = document.getElementById("auth-button");
     const arrowSpan = authButton.querySelector(".arrow");
 
     function updateAuthButton() {
-        if (localStorage.getItem("isLoggedIn") === "true") {
+        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+        
+        if (isLoggedIn) {
             authButton.textContent = "Logout";
             authButton.classList.add("logout");
         } else {
@@ -15,21 +18,28 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    authButton.addEventListener("click", function () {
+    // Add a slight delay to ensure localStorage is read correctly
+    setTimeout(updateAuthButton, 100);
+
+    authButton.addEventListener("click", async function () {
         if (localStorage.getItem("isLoggedIn") === "true") {
-            localStorage.removeItem("isLoggedIn");
-            localStorage.removeItem("companyLogoUrl")
+            const success = await logoutUser();
+            if (success) {
+                localStorage.removeItem("isLoggedIn");
+                localStorage.removeItem("companyLogoUrl");
+                localStorage.removeItem("companyId");
+                localStorage.clear();  
+
+                updateAuthButton();
+                window.location.href = "login.html";
+            }
         } else {
             localStorage.setItem("isLoggedIn", "true");
+            window.location.href = "dashboard.html";
         }
-        updateAuthButton();
     });
-
-    updateAuthButton();
 });
-
-
-const getAllEvents = async function getAllEvents() {
+const getAllEvents = async function () {
     try {
         const response = await fetch("http://127.0.0.1:5000/api/v1/events/", {
             method: 'GET',
@@ -74,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const events = await getAllEvents();
         if (events.length > 0) {
             events.forEach((event) => {
-                eventCard = createEventCard(event);
+                const eventCard = createEventCard(event);
                 eventsGrid.appendChild(eventCard);
             });
         } else {
@@ -84,3 +94,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Call the loadEvents function to populate the grid
     loadEvents();
 });
+
+
